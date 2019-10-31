@@ -1,6 +1,8 @@
+#import the necessary libraries
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+
 browser = webdriver.Chrome('C:\\Users\\krishnateja\\Downloads\\chromedriver_win32\\chromedriver.exe') #replace this with exectuable path
 browser.get('https://yocket.in/account/login')
 time.sleep(2)
@@ -29,7 +31,7 @@ time.sleep(2)
 search_btn.send_keys(Keys.ARROW_DOWN)
 search_btn.send_keys(Keys.RETURN)
 
-admits_rejects =  browser.find_element_by_xpath("//a[@href='/applications-admits-rejects/state-university-of-new-york-at-buffalo/2']")
+admits_rejects =  browser.find_element_by_xpath("//a[@href='/applications-admits-rejects/state-university-of-new-york-at-buffalo/2']") #replace this with the link of the university by inspecting and you can find it in the (a href)
 admits_rejects.click()
 
 #for elem in browser.find_elements_by_xpath('.//div[@class = "row text-center"]'):
@@ -47,6 +49,8 @@ for i in range(2,20):# Number of Pages you change this.
         if 'NEW' not in y.text:
             x.append(y.text)
     i = 0
+    
+    #saving the data in a text file
     for elem in browser.find_elements_by_xpath('.//div[@class = "row text-center"]'):
         print(x[i]+' '+elem.text)
         with open('admits.txt','a+') as f:
